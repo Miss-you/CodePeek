@@ -80,7 +80,7 @@ OK @playwright/test  ^1.58.2
 
 ```
 $ npm ls --depth=0
-codepeek@0.0.0 /Users/yousa/Documents/Github/CodePeek-T01
+codepeek@0.0.0 <repo-root>
 ├── @playwright/test@1.59.1
 ├── electron-builder@26.8.1
 ├── electron-vite@5.0.0

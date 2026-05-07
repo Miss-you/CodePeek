@@ -20,7 +20,7 @@ CodePeek/
 - `vitest.config.ts` / `playwright.e2e.config.ts`：不存在（T06 / T07 负责）。
 - `electron-builder.yml`：不存在（T18 负责）。
 - 源码目录 `src/`：不存在（T03 负责）。
-- `openspec` CLI：已安装（`/opt/homebrew/bin/openspec`, v1.3.0）。
+- `openspec` CLI：已安装（`openspec` v1.3.0；`which openspec` 返回宿主机器上的本地路径）。
 - Git：`main` 分支干净，已基于 main 开出隔离 worktree `../CodePeek-T01`，分支 `task/T01-bootstrap-package-scripts`。
 
 ## 约束与硬要求

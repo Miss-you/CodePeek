@@ -12,7 +12,7 @@
 
 **Goals:**
 
-- 在 `/Users/yousa/Documents/Github/CodePeek` 仓库根落地 `package.json`，含 9 条核心脚本（`dev` / `build` / `test` / `test:e2e` / `lint` / `typecheck` / `format` / `dist:mac` / `dist:mac:dir`）+ 3 条辅助脚本（`preview` / `format:check` / `test:watch`）。
+- 在仓库根落地 `package.json`，含 9 条核心脚本（`dev` / `build` / `test` / `test:e2e` / `lint` / `typecheck` / `format` / `dist:mac` / `dist:mac:dir`）+ 3 条辅助脚本（`preview` / `format:check` / `test:watch`）。
 - 装入立即可跑的最小 `devDependencies`，使每个脚本绑定的二进制（`electron-vite` / `eslint` / `prettier` / `tsc` / `vitest` / `playwright` / `electron-builder`）能被 npm 解析。
 - 通过 `npm install` 生成 `package-lock.json`，保证脚本契约的可重复消费。
 - 锁 `engines.node>=22`，与源设计 §1 与未来 `.nvmrc`（T05）/ CI（T09）对齐。
