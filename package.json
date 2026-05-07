@@ -1,0 +1,46 @@
+{
+  "name": "codepeek",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Unified monitoring dashboard for IDEs and AI coding agents.",
+  "license": "Apache-2.0",
+  "author": "CodePeek contributors",
+  "homepage": "https://github.com/Miss-you/CodePeek",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Miss-you/CodePeek.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Miss-you/CodePeek/issues"
+  },
+  "main": "out/main/main.js",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "preview": "electron-vite preview",
+    "lint": "eslint .",
+    "typecheck": "tsc -b",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "npm run build && playwright test -c playwright.e2e.config.ts",
+    "dist:mac": "npm run build && electron-builder --mac zip dmg --publish never",
+    "dist:mac:dir": "npm run build && electron-builder --mac dir --publish never -c.mac.identity=null -c.mac.notarize=false"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "electron": "^41.1.0",
+    "electron-builder": "^26.0.0",
+    "electron-vite": "^5.0.0",
+    "eslint": "^9.0.0",
+    "playwright": "^1.58.2",
+    "prettier": "^3.0.0",
+    "typescript": "^5.6.0",
+    "vitest": "^3.0.0"
+  }
+}
