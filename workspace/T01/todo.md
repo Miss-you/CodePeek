@@ -9,7 +9,7 @@
    - 后续若部署完整 skill 集，应回归原工作流。
 
 2. **TDD 不适用**
-   - T01 落地 `package.json` 与 lockfile，**不存在可单测的运行时代码**。验证靠 `npm run -s` + 命令存在性 dry run。
+   - T01 落地 `package.json` 与 lockfile，**不存在可单测的运行时代码**。验证靠 `npm run` + 命令存在性 dry run（npm 11 下 `npm run -s` 会静默该列表，故统一使用 `npm run`；等价静态命令为 `node -e "console.log(Object.keys(require('./package.json').scripts).join('\n'))"`）。
    - `test_strategy.md` 会显式记录这一点。
 
 ## 后续任务清理点

@@ -101,7 +101,7 @@ T01 一旦合并，**这些脚本名即为 SemVer 等级稳定契约**——后�
 ### 6. 验证策略（提前规划）
 
 - 静态：`cat package.json | jq '.scripts | keys'` 包含 9 个目标脚本（含 `format:check` 等额外脚本）。
-- 动态：`npm run -s` 列出全部脚本（task 板首个验证手段）。
+- 动态：`npm run` 列出全部脚本（task 板首个验证手段；npm 11 下 `-s` 会静默，故采用 `npm run`，等价静态命令为 `node -e "console.log(Object.keys(require('./package.json').scripts).join('\n'))"`）。
 - 命令存在性：对每个脚本调用 `npm run <name> -- --help` 或 `npm run <name> -- --version` 不返回 "missing script"。注意：本任务不要求脚本逻辑通过，只要求脚本存在 + 工具二进制可被解析。
 - `npm install` 完整跑一遍并产出 `package-lock.json`。
 
@@ -110,5 +110,5 @@ T01 一旦合并，**这些脚本名即为 SemVer 等级稳定契约**——后�
 | 指标 | 计划证据 |
 | --- | --- |
 | 仓库根存在 `package.json` | `ls package.json` |
-| `npm run lint/typecheck/test/build` 命令存在 | `npm run -s` 输出包含这 4 个脚本（M1 内其他任务负责让它们绿） |
-| 首个验证：`npm run -s` 列出全部目标脚本 | terminal 输出粘贴到 verification.md |
+| `npm run lint/typecheck/test/build` 命令存在 | `npm run` 输出包含这 4 个脚本（M1 内其他任务负责让它们绿；npm 11 下 `-s` 会静默，故用 `npm run`） |
+| 首个验证：`npm run` 列出全部目标脚本 | terminal 输出粘贴到 verification.md |

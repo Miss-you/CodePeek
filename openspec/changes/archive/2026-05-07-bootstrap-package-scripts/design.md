@@ -99,7 +99,7 @@
 
 | 风险 | 缓解 |
 | --- | --- |
-| `npm install` 在网络受限环境失败 → 无 lockfile | 在 worktree 内执行；如失败则在 `workspace/T01/todo.md` 记录并降级到"仅 package.json"，命令存在性靠 `npm run -s` 验证（task 板首验手段）。 |
+| `npm install` 在网络受限环境失败 → 无 lockfile | 在 worktree 内执行；如失败则在 `workspace/T01/todo.md` 记录并降级到"仅 package.json"，命令存在性靠 `npm run` 验证（task 板首验手段；npm 11 下 `-s` 会静默，故统一使用 `npm run`）。 |
 | `electron@^41` 体积大 / 平台特定二进制 | 仅本任务一次性下载；`.gitignore` 已排除 `node_modules/`。 |
 | `typescript@^5.6` 与 `eslint@^9` / `vitest@^3` peer 兼容 | T02 / T04 / T06 在自身任务中会做兼容验证；T01 仅装顶层包，无 plugin。 |
 | `dist:mac:dir` 本地跑现在仍会失败（缺 `electron-builder.yml`） | 这是 T01 边界内的预期；命令存在性即可，T18 才让它绿。 |

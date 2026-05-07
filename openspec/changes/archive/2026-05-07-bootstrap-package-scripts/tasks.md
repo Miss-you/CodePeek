@@ -20,7 +20,7 @@
 
 ## 4. 验证
 
-- [ ] 4.1 首验：`npm run -s` 列出全部目标脚本（写入 `workspace/T01/verification.md`）
+- [ ] 4.1 首验：`npm run` 列出全部目标脚本（写入 `workspace/T01/verification.md`；npm 11 下 `-s` 会静默，故使用 `npm run`）
 - [ ] 4.2 探针：对 `lint` / `typecheck` / `test` / `build` 各跑一次 `npm run <name>` 或 `npm run <name> -- --help`，确认不报 `missing script`（允许工具本身因缺配置而退出非 0）
 - [ ] 4.3 对照 `specs/package-scripts-contract/spec.md` 每条 Scenario 的 WHEN/THEN，写入 `workspace/T01/verification.md`
 - [ ] 4.4 `openspec validate bootstrap-package-scripts --strict` 通过

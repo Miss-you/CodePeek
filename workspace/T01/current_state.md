@@ -31,7 +31,7 @@ CodePeek/
 2. `"Done When"`：
    - 仓库根存在 `package.json`。
    - M1 结束后 `npm run lint/typecheck/test/build` 可被无错调用（命令存在性即可；T01 本身无需绿）。
-3. 首个验证手段：`npm run -s`（仅列出脚本，不执行）。
+3. 首个验证手段：`npm run`（仅列出脚本，不执行；npm 11 下 `-s` 会静默该列表，故采用 `npm run`，等价静态命令为 `node -e "console.log(Object.keys(require('./package.json').scripts).join('\n'))"`）。
 4. 源设计 §1 明确要求锁 Node 22（`engines.node >=22`）+ 后续 T05 再落 `.nvmrc`。
 5. `type: module`（CodePal 对齐），`private: true`（未发布 npm）。
 6. AGENTS.md 硬约束："提交前 lint / typecheck / 测试" —— 脚本存在 = 硬约束能落地的物质基础。

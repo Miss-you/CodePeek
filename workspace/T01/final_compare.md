@@ -12,7 +12,7 @@
 | Change | `bootstrap-package-scripts` | `openspec/changes/bootstrap-package-scripts/{proposal,design,tasks}.md` + `specs/package-scripts-contract/spec.md`，`openspec validate --strict` 通过 | ✅ |
 | Done When 1 | 仓库根存在 `package.json` | 存在；JSON 合法 | ✅ |
 | Done When 2 | `npm run lint/typecheck/test/build` 在 M1 完成后能被无错调用 | 已逐项 dry run；无 `missing script`；工具级失败由 T02–T06 范围解释 | ✅ |
-| 首验 | `npm run -s` 列出全部目标脚本 | 12 条脚本（9 核心 + 3 辅助）全部列出 | ✅ |
+| 首验 | `npm run` 列出全部目标脚本（npm 11 下 `-s` 静默，故 Scenario 统一 `npm run`） | 12 条脚本（9 核心 + 3 辅助）全部列出 | ✅ |
 
 **对原始目标无任何未记录偏差。**
 

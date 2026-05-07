@@ -46,7 +46,7 @@ CodePal 是 CodePeek 源设计明确对齐的参考实现；T01 的脚本契约�
 | `dist:mac:unsigned:test` | 存在，调用自写脚本 | **暂不落**，源设计 §5.2 将其标为"本地 dist:mac:dir / dist:mac:unsigned:test 不签名跑一遍"但未进 T01 Goal；T19 / T18 再决定 | 不过度设计。 |
 | `release:mac` | 存在 | **暂不落**，属 T21 的 CI release workflow 范围 | 边界清晰。 |
 | `seed:history` | 存在 | **暂不落**，属 M3 Claude adapter 测试 fixture 范围 | 边界清晰。 |
-| `preview` | 存在 | **暂不落**，task 板 T01 Goal 未列 | 不过度设计。 |
+| `preview` | 存在 | **采纳为辅助脚本**（`electron-vite preview`，便于手动验证 build 产物；task 板 T01 Goal 未硬性列出，但不在稳定契约内，零维护成本） | 与 CodePal 对齐。 |
 | 版本 | `1.1.4` | `0.0.0` | CodePeek 尚未首版。 |
 | devDependencies 版本 | Electron 41 / vitest 3 / playwright 1.58 / typescript 6 / eslint 9 / electron-vite 5 / electron-builder 26 | 采用 CodePal 同代 major（取 npm 最新稳定版） | 与参考实现保持可比；lockfile 由 `npm install` 决定 patch。 |
 
@@ -58,6 +58,7 @@ CodePal 是 CodePeek 源设计明确对齐的参考实现；T01 的脚本契约�
   - 新增 `format` + `format:check`（源设计 §2 + T01 Goal 列名）。
   - `lint` 去 `--ext`（flat config 惯例）。
   - `dist:mac:dir` 去 CodePal 专属环境变量。
-  - 不落 `preview` / `release:mac` / `seed:history` / `dist:mac:unsigned:test`（显式越界）。
+  - 不落 `release:mac` / `seed:history` / `dist:mac:unsigned:test`（显式越界）。
+  - `preview` 采纳为辅助脚本（非稳定契约，后续任务可无痛增删）。
 
 结论：T01 的脚本契约 = CodePal 核心脚本同构 + 显式补 `typecheck` / `format` + 去 CodePal 项目专属分支。

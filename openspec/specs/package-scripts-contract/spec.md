@@ -40,7 +40,7 @@ CodePeek 仓库根 SHALL 存在合法的 `package.json` 文件，满足以下字
 
 #### Scenario: 所有 9 条核心脚本可被 npm 解析
 
-- **WHEN** 在仓库根执行 `npm run -s`
+- **WHEN** 在仓库根执行 `npm run`（npm 11 下 `-s/--silent` 会静默该列表输出，故 Scenario 统一使用不带 `-s` 的 `npm run`；静态等价命令为 `node -e "console.log(Object.keys(require('./package.json').scripts).join('\n'))"`）
 - **THEN** 输出列表至少包含 `dev`、`build`、`test`、`test:e2e`、`lint`、`typecheck`、`format`、`dist:mac`、`dist:mac:dir`
 
 #### Scenario: 脚本命令语义与契约一致
@@ -79,7 +79,7 @@ CodePeek 仓库根 SHALL 存在合法的 `package.json` 文件，满足以下字
 
 #### Scenario: 辅助脚本在首版 package.json 中存在
 
-- **WHEN** 在仓库根执行 `npm run -s`
+- **WHEN** 在仓库根执行 `npm run`（见上方同等效的静态命令说明）
 - **THEN** 输出列表包含 `preview`、`format:check`、`test:watch`
 
 ### Requirement: package-lock.json 存在

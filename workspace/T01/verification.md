@@ -59,6 +59,8 @@ OK dist:mac:dir   = npm run build && electron-builder --mac dir --publish never 
 
 ## V3 · devDependencies 覆盖
 
+脚本契约只要求 8 条脚本二进制必须被 devDependencies 覆盖；下面 8 条对应 spec 的「命令二进制可被 npm 解析」：
+
 ```
 OK electron          ^41.1.0
 OK electron-vite     ^5.0.0
@@ -69,6 +71,8 @@ OK typescript        ^5.6.0
 OK vitest            ^3.0.0
 OK @playwright/test  ^1.58.2
 ```
+
+`package.json.devDependencies` 实际共声明 9 项：上表 8 项 + 冗余的 `playwright ^1.58.2`。后者是对 CodePal 参考实现的保守对齐（详见 `reference_impl.md` 与 `todo.md` 中 T07 收敛点），不在脚本契约要求内，故 V3 单独列出而非计入 8 项必集。
 
 对应 spec `Requirement: 命令二进制可被 npm 解析 · Scenario: devDependencies 覆盖所有核心脚本二进制`：**PASS**。
 
@@ -136,6 +140,6 @@ Change 'bootstrap-package-scripts' is valid
 - task 板 T01 `Done When` 两项全部满足：
   - ✅ 仓库根存在 `package.json`
   - ✅ `npm run lint/typecheck/test/build` 四个命令能被无错调用（命令存在性维度）
-- 首验 `npm run -s` 列出全部目标脚本：通过。
+- 首验 `npm run` 列出全部目标脚本：通过（npm 11 下 `npm run -s` 会静默该列表，故实际使用不带 `-s` 的 `npm run`；等价静态命令为 `node -e "console.log(Object.keys(require('./package.json').scripts).join('\n'))"`）。
 
 **验证结论**：T01 满足验收阈值，可以进入 review 阶段。

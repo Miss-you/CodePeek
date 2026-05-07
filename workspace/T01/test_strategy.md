@@ -15,7 +15,7 @@ T01 只产出 `package.json` 与 `package-lock.json`，**不写任何运行时�
 | 目标（来自 `specs/package-scripts-contract/spec.md`） | 证明方式 | 命令 | 能证明什么 |
 | --- | --- | --- | --- |
 | package.json 存在且字段合规 | 静态 | `node -e "const p=require('./package.json'); console.log(p.name, p.private, p.type, p.main, p.engines.node)"` | name/private/type/main/engines.node 5 字段与 spec 一致 |
-| 9 条核心脚本 + 3 条辅助脚本全部存在 | 动态 | `npm run -s` 并对照目标清单 | 脚本名集合完整；若缺一条，立即失败 |
+| 9 条核心脚本 + 3 条辅助脚本全部存在 | 动态 | `npm run` 并对照目标清单（npm 11 下 `-s/--silent` 会静默该列表输出，等价静态命令为 `node -e "console.log(Object.keys(require('./package.json').scripts).join('\n'))"`） | 脚本名集合完整；若缺一条，立即失败 |
 | 脚本命令语义与契约一致 | 静态 | `node -e "console.log(JSON.stringify(require('./package.json').scripts, null, 2))"` 并 diff 期望值 | 命令字符串一字不差 |
 | devDependencies 覆盖每条脚本的二进制 | 静态 | `node -e "const d=require('./package.json').devDependencies; ['electron','electron-vite','electron-builder','eslint','prettier','typescript','vitest','@playwright/test'].forEach(k=>{if(!d[k]) process.exitCode=1})"` | 二进制包都被声明 |
 | 命令可被 npm 解析（命令存在性） | 动态 | `npm run lint -- --version`；对 typecheck / test / build 同构探针 | 没有 `missing script`；工具本身是否绿不在 T01 范围 |

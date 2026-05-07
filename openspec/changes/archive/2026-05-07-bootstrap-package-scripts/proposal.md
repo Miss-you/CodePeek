@@ -7,7 +7,7 @@ CodePeek 仓库目前没有 `package.json`，但所有 AI agent skill（`compati
 ## What Changes
 
 - 在仓库根新增 `package.json`，字段含 `name=codepeek` / `private: true` / `type: module` / `engines.node>=22` / `main=out/main/main.js`。
-- 定义脚本契约 9 项（核心）+ 4 项（辅助）：
+- 定义脚本契约 9 项（核心）+ 3 项（辅助）：
   - 核心：`dev` / `build` / `test` / `test:e2e` / `lint` / `typecheck` / `format` / `dist:mac` / `dist:mac:dir`
   - 辅助：`preview` / `format:check` / `test:watch`（不在 task 板硬要求内，零维护成本，便于后续任务）
 - 引入立即可跑的最小 `devDependencies`：`electron` / `electron-vite` / `electron-builder` / `eslint` / `prettier` / `typescript` / `vitest` / `@playwright/test` / `playwright`。
